@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Loan Payment Calculator</title>
+
+<style>
+
+body{
+font-family: Arial;
+text-align: center;
+margin-top: 60px;
+background-color: white;
+}
+
+input{
+padding:8px;
+margin:10px;
+}
+
+button{
+padding:10px 20px;
+font-size:16px;
+}
+
+#result{
+margin-top:20px;
+font-size:22px;
+font-weight:bold;
+}
+
+</style>
+
+<script>
+
+function calculatePayment(){
+
+let PV = document.getElementById("loan").value;
+let r = document.getElementById("rate").value;
+let n = document.getElementById("years").value;
+
+PV = Number(PV);
+r = Number(r);
+n = Number(n);
+
+let P = ((r/100/12) * PV) / (1-(1+(r/100/12))**-(n*12));
+
+document.getElementById("result").innerHTML =
+"Monthly Payment: $" + P.toFixed(2);
+
+}
+
+</script>
+
+</head>
+
+<body>
+
+<h1>Loan Payment Calculator</h1>
+
+<p>Loan Amount</p>
+<input type="number" id="loan">
+
+<p>Interest Rate (%)</p>
+<input type="number" id="rate">
+
+<p>Loan Length (Years)</p>
+<input type="number" id="years">
+
+<br><br>
+
+<button onclick="calculatePayment()">Calculate Payment</button>
+
+<p id="result"></p>
+
+</body>
+</html>
